@@ -1,16 +1,27 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch} from "react-redux";
 import {getAuth, createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
 import {useForm} from "react-hook-form";
+import {Button, Input} from "@mui/material";
+import {useNavigate} from "react-router-dom";
+
 import {createUserDocumentFromAuth} from "../../configs";
 import {userActions} from "../../redux/slices";
+import css from './RegisterPage.module.css';
+import {useAuth} from "../../hooks";
+
 
 
 const RegisterPage = () => {
 
     const dispatch = useDispatch();
-
+    const {id} = useAuth();
     const {handleSubmit, register, reset} = useForm();
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        console.log(`${id} changed`);
+    }, [id])
 
     const handleRegister = async (data) => {
         console.log(data);
@@ -34,13 +45,15 @@ const RegisterPage = () => {
                 id: user.uid,
                 token: user.accessToken,
                 displayName: user.displayName
-            }))
+            }));
             reset();
+            navigate(-1);
         } catch (e) {
             if (e.code === 'auth/email-already-in-use') {
                 alert('Cannot create user, email already in use');
             }
             else {
+                alert(e.message);
                 console.log(e.message);
                 console.log(e.code);
                 console.log(e);
@@ -52,11 +65,15 @@ const RegisterPage = () => {
 
     return (
         <form onSubmit={handleSubmit(handleRegister)}>
-            <input type={"text"} placeholder={'display name'} {...register('displayName')}/>
-            <input type={'email'} placeholder={'email'} {...register('email')}/>
-            <input type={'password'} placeholder={'password'} {...register('password')}/>
-            <input type={'password'} placeholder={'confirm password'} {...register('confirmPassword')}/>
-            <button type={"submit"}>{'Register'}</button>
+            <h3>Don't have an account?</h3>
+            <p>Sign up with your email and password</p>
+            <div className={css.formContainer}>
+            <Input type={"text"} placeholder={'Display Name'} required={true} color={'secondary'}  {...register('displayName')}/>
+            <Input  type={'email'} required={true} placeholder={'Email'} {...register('email')}/>
+            <Input  type={'password'} required={true} placeholder={'Password'} color={'secondary'} {...register('password')}/>
+            <Input  type={'password'} required={true} placeholder={'Confirm Password'} {...register('confirmPassword')}/>
+            <Button type={'submit'}>Sign up</Button>
+            </div>
         </form>
     )
 

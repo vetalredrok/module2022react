@@ -23,6 +23,7 @@ const userSlice = createSlice({
             state.token = null;
             state.id = null;
             state.displayName = null;
+            console.log(state.email, state.displayName, state.id);
         },
     }
 });

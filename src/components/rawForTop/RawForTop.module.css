@@ -1,0 +1,22 @@
+
+.parent{
+    margin-left: 20px;
+}
+
+.son{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.RawForTop{
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    padding: 20px 60px 20px 20px;
+}
+
+.RawForTop::-webkit-scrollbar{
+    display: none;
+}

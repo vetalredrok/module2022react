@@ -1,0 +1,31 @@
+.Navigation {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.name{
+    font-size: 2rem;
+}
+
+.nav_links_container {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: whitesmoke;
+
+    gap: 20px;
+    justify-content: flex-start;
+}
+.nav_link, .nav_link2{
+    padding: 5px 10px;
+    cursor: pointer;
+    border: 2px whitesmoke solid;
+}
+.nav_links_container>.nav_link2:hover{
+    color: #c02929;
+}
+.nav_links_container>.nav_link:hover{
+    color: #4eb724;
+}

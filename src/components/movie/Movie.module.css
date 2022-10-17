@@ -1,0 +1,22 @@
+
+.Movie{
+    width: 100%;
+    object-fit: contain;
+    max-height: 200px;
+    margin-right: 10px;
+    transition: transform 450ms;
+}
+.small_info{
+    display: none;
+    flex-direction: column;
+    font-size: 12px;
+    padding-right: 5px;
+}
+
+.Movie:hover{
+    cursor: pointer;
+    transform: scale(1.09);
+}
+.Movie:hover + .small_info{
+    display: flex;
+}

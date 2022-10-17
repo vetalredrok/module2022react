@@ -1,2 +1,4 @@
+export * from './movie/Movie';
 export * from './navigation/Navigation';
-export * from './form/Form'
+export * from './rawForGenres/RawForGenres';
+export * from './rawForTop/RawForTop';

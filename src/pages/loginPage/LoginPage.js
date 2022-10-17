@@ -1,13 +1,17 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
 import { getAuth, signInWithEmailAndPassword  } from "firebase/auth";
+import {Button, Input} from "@mui/material";
 
 import {useForm} from "react-hook-form";
 import {userActions} from "../../redux/slices";
+import css from './LoginPage.module.css';
+import {useNavigate} from "react-router-dom";
 
 const LoginPage = () => {
 
-    let dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const {handleSubmit, register, reset} = useForm();
 
@@ -24,9 +28,11 @@ const LoginPage = () => {
                 id: user.uid,
                 token: user.accessToken,
                 displayName: user.displayName
-            }))
+            }));
             reset();
+            navigate(-1);
         } catch (e) {
+            alert(e.message);
             console.log(e.message);
             console.log(e.code);
             console.log(e);
@@ -36,9 +42,13 @@ const LoginPage = () => {
     }
     return (
         <form onSubmit={handleSubmit(handleLogin)}>
-        <input type={'email'} placeholder={'email'} {...register('email')}/>
-        <input type={'password'} placeholder={'password'} {...register('password')}/>
-        <button type={"submit"}>{'Login'}</button>
+            <h3>Already have an account?</h3>
+            <p>Sign in with your email and password</p>
+            <div className={css.formContainer}>
+                <Input type={'email'} placeholder={'Email'} {...register('email')}/>
+                <Input type={'password'} placeholder={'Password'} color={'secondary'} {...register('password')}/>
+                <Button type={"submit"}>Sign in</Button>
+            </div>
     </form>
 );
 };
