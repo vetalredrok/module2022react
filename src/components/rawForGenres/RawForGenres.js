@@ -9,9 +9,6 @@ import {Movie} from "../movie/Movie";
 const RawForGenres = ({genre, page, title}) => {
 
     const {barFirst, error} = useSelector(state => state.movies);
-
-    console.log(barFirst);
-
     const dispatch = useDispatch();
 
     const slideLeft = () =>{
@@ -32,14 +29,13 @@ const RawForGenres = ({genre, page, title}) => {
     }, [page])
 
     const index = barFirst.findIndex(value => value.id === genre);
-    console.log(index);
 
     return (
         <div className={css.parent}>
             {
                 error && <div>{error}</div>
             }
-            <h3>{title}</h3>
+            <h3>{title}:</h3>
             <div className={css.son}>
                 <MdChevronLeft onClick={slideLeft} size={60} style={{'cursor': 'pointer'}}/>
                 <div className={css.RawForTop} id={`${genre}`}>

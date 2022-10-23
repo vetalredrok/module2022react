@@ -1,11 +1,60 @@
 .Navigation {
     display: flex;
-    justify-content: space-around;
-
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    height: 180px;
+    font-weight: bold;
+    z-index: 2;
 }
 
+.logo_container{
+    margin-left: 20px;
+}
+
+.logo{
+    width: 350px;
+    height: 100px;
+}
+
+.logo:hover{
+    height: 110px;
+    border-radius: 20px;
+}
+
+.moviesList{
+    width: 100px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.30);
+    color: #debaf1;
+    font-size: 1rem;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.moviesList:hover{
+    height: 60px;
+    background: rgba(0, 0, 0, 0.50);
+}
+
+.searchIcon{
+    height: 50px;
+    color: #debaf1;
+}
 .name{
-    font-size: 2rem;
+    font-size: 1rem;
+    color: #debaf1;
+    background: rgba(0, 0, 0, 0.30);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+.name:hover{
+    height: 60px;
+    background: rgba(0, 0, 0, 0.50);
 }
 
 .nav_links_container {
@@ -18,14 +67,48 @@
     gap: 20px;
     justify-content: flex-start;
 }
+.nav_link2{
+    margin-right: 20px;
+}
 .nav_link, .nav_link2{
     padding: 5px 10px;
     cursor: pointer;
     border: 2px whitesmoke solid;
+    background: rgba(0, 0, 0, 0.62);
 }
 .nav_links_container>.nav_link2:hover{
     color: #c02929;
 }
 .nav_links_container>.nav_link:hover{
     color: #4eb724;
+}
+.box{
+    display: flex;
+    justify-content: center;
+}
+.searchBox{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 10px;
+    color: #debaf1;
+    background: rgba(0, 0, 0, 0.62);
+    border-radius: 10px;
+    margin-left: 20px;
+    align-items: center;
+}
+.searchInput{
+    height: 30px;
+    color: #debaf1;
+    background: rgba(0, 0, 0, 0.01);
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    margin-left: 15px;
+}
+.searchInput:focus{
+    height: 50px;
+}
+.searchInput:hover{
+    height: 50px;
 }

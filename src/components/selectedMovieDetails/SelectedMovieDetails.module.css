@@ -1,0 +1,67 @@
+
+.Global_Container{
+    position: fixed;
+    top: -50%;
+    z-index: 12;
+    background: rgba(255, 255, 255, 0.6);
+    min-height: 200vh;
+    width: 97.9%;
+    overflow: hidden;
+}
+
+.Container{
+    position: fixed;
+    margin: auto;
+    min-height: 80%;
+    width: 60%;
+    border: 4px solid;
+    left: 20%;
+    top: 10%;
+    z-index: 15;
+    background: rgb(197, 178, 203);
+
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    min-height: 50px;
+    font-size: 2rem;
+    color: #debaf1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(2, 0, 0, 0.7);
+    position: relative;
+    padding-right: 15px;
+    padding-left: 20px;
+}
+.button{
+    width: 30px;
+    background-color: black;
+}
+
+.overviewAndStars{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.overview{
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    background-color: rgba(2, 0, 0, 0.7);
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.stars{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(2, 0, 0, 0.7);
+    width: 80%;
+}

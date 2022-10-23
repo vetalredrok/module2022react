@@ -19,4 +19,5 @@
 }
 .Movie:hover + .small_info{
     display: flex;
+    transition: transform 3s;
 }

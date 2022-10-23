@@ -1,21 +1,31 @@
-import React from 'react';
-import {Route, Routes} from "react-router-dom";
+import React, {useContext} from 'react';
+import {Footer, Navigation} from "../../components";
+import {Outlet} from "react-router-dom";
 
-import {Authentication, HomePage} from "../../pages";
-import {Navigation} from "../../components";
+import {DarkModeContext} from "../../context";
 
 
 
 const MainLayout = () => {
+
+    const [darkMode, setDarkMode] = useContext(DarkModeContext);
+
+
     return (
-        <Routes>
-            <Route path={'/'} element={<Navigation/>}>
-                <Route index element={<HomePage/>}/>
-                <Route path={'auth'} element={<Authentication/>}/>
-
-            </Route>
-
-        </Routes>
+        <div style={{backgroundColor: darkMode ? '#404040' : '#fff',
+            color: darkMode? '#fff' : '#000', height: '100%'}}>
+            <section style={{backgroundColor: darkMode ? '#404040' : '#fff',
+            color: darkMode? '#fff' : '#000', height: '100%'
+            }}>
+            <Navigation/>
+            </section>
+            <section style={{backgroundColor: darkMode ? '#404040' : '#fff',
+                color: darkMode? '#fff' : '#000', height: '100%'
+            }}>
+                <Outlet/>
+            </section>
+            <Footer/>
+        </div>
     );
 };
 

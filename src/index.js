@@ -8,6 +8,7 @@ import App from './App';
 import {setupStore} from "./redux";
 import './index.css';
 import './configs/firebase/firebase';
+import {DarkModeProvider} from "./context";
 
 const store = setupStore();
 
@@ -18,7 +19,9 @@ root.render(
 
       <BrowserRouter>
           <Provider store={store}>
+              <DarkModeProvider>
               <App />
+              </DarkModeProvider>
           </Provider>
       </BrowserRouter>
 

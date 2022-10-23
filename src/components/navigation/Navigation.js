@@ -1,19 +1,29 @@
-import React, {Fragment, useEffect, useState} from 'react';
-import {Link, Outlet} from "react-router-dom";
+import React, {Fragment, useContext, useEffect, useState} from 'react';
+import {Link, NavLink, useNavigate} from "react-router-dom";
 import {getAuth,signOut} from "firebase/auth";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
+import SearchIcon from '@mui/icons-material/Search';
+import {Button} from "@mui/material";
+import {useForm} from "react-hook-form";
+import {ChooserGenres} from "../chooserGenres/ChooserGenres";
 
 import {useAuth} from "../../hooks";
-import {ReactComponent as CrownLogo} from '../../assets/wolf-david.svg'
+import {ReactComponent as CrownLogo} from '../../assets/smace films.svg';
 import {userActions} from "../../redux/slices";
 import css from './Navigation.module.css'
 import {moviesService} from "../../services";
+import {DarkModeContext} from "../../context";
 
 const Navigation = () => {
 
     const auth = getAuth();
+    const {handleSubmit, register} = useForm();
+    const [movie, setMovie] = useState(null);
+    const {isAuth, displayName} = useAuth();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const[movie, setMovie] = useState(null)
+    const [darkMode, setDarkMode] = useContext(DarkModeContext);
 
 
     const signOutUser = async () => {
@@ -21,9 +31,6 @@ const Navigation = () => {
         dispatch(userActions.removeUser());
         console.log('logged out');
     };
-
-    const {isAuth, displayName} = useAuth();
-    const dispatch = useDispatch();
 
     useEffect(()=> {
         async function fetchData(){
@@ -36,7 +43,7 @@ const Navigation = () => {
             return request;
         }
         fetchData();
-    }, [])
+    }, []);
 
     useEffect(() => {
         const onChange = (current) =>{
@@ -55,8 +62,11 @@ const Navigation = () => {
         };
 
         return auth.onAuthStateChanged(onChange, onError);
-    }, [])
+    }, []);
 
+    const onSubmit = (data) => {
+        navigate(`/search/${data.movieName}`);
+    }
 
     return (
         <Fragment>
@@ -66,12 +76,27 @@ const Navigation = () => {
                          backgroundImage: `${movie ? `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")` : ''}` ,
                          backgroundPosition: 'center center'
                      }}>
-                    <Link className={'logo-container'} to='/'>
-                        <CrownLogo className={'logo'}/>
+                    <Link className={css.logo_container} to='/home'>
+                        <CrownLogo className={css.logo}/>
                     </Link>
+                    <NavLink to={'/movies?page=1'}>
+                        <div className={css.moviesList}>Movies List</div>
+                    </NavLink>
+                    <div className={css.box}>
+                        <form className={css.searchBox} onSubmit={handleSubmit(onSubmit)}>
+                            <SearchIcon className={css.searchIcon} />
+                            <input type={'text'} className={css.searchInput} placeholder={'Search movie'} {...register('movieName')}/>
+                            <Button variant="outlined" type={'submit'} color={'secondary'}>SEARCH</Button>
+                        </form>
+                    </div>
+
+                    <ChooserGenres/>
+
+                    <Button sx={{backgroundColor: 'black'}} color={'secondary'} onClick={()=> setDarkMode(!darkMode)}>Dark mode</Button>
+                <Button sx={{backgroundColor: 'black'}} color={'secondary'} onClick={()=> navigate('info')}>Info page</Button>
                     <div className={css.nav_links_container}>
                         {
-                            displayName && <h4 className={css.name}>{displayName}</h4>
+                            displayName && <div className={css.name}>{displayName}</div>
                         }
                         {
                             isAuth ? <span className={css.nav_link2} onClick={signOutUser}>Sign Out</span>
@@ -81,7 +106,6 @@ const Navigation = () => {
                     </div>
                 </div>
             <hr/>
-            <Outlet/>
         </Fragment>
     );
 };
