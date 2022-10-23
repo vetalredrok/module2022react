@@ -20,7 +20,6 @@ const HomePage = () => {
         if(genres.length && !resultRandom.length){
             const genresForRandom = [...genres];
             const result = genresForRandom.sort(()=> Math.random() - Math.random()).slice(0,5);
-            console.log(result);
             dispatch(moviesActions.setResultRandom(result));
         }
     },[genres, resultRandom])

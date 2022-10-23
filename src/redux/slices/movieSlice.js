@@ -36,7 +36,6 @@ const getByGenre = createAsyncThunk(
     async ({genre, page}, {rejectWithValue})=>{
         try {
             const {data} = await moviesService.getByGenre(genre,page);
-            console.log(data);
             const {results} = data;
             const obj ={
                 id: genre,
@@ -81,7 +80,6 @@ const discoverByGenre = createAsyncThunk(
     async ({genre, page},  {rejectWithValue}) => {
         try {
             const {data} = await moviesService.discoverByGenre(genre, page);
-            console.log(data);
             return data;
         } catch (e) {
             return rejectWithValue(e.response.data);
@@ -119,7 +117,6 @@ const moviesSlice = createSlice({
         },
         setGenre: (state, action) => {
             state.selectedGenre = action.payload
-            console.log(state.selectedGenre)
         }
     },
     extraReducers: builder => {
@@ -137,7 +134,6 @@ const moviesSlice = createSlice({
             })
             .addCase(getByGenre.fulfilled, (state, action) => {
                 state.barFirst.push(action.payload);
-                console.log(state.barFirst);
                 state.loading = false;
             })
             .addCase(getAllGenres.fulfilled, (state, action) => {

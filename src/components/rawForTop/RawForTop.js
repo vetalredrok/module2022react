@@ -23,7 +23,6 @@ const RawForTop = ({page}) => {
 
     useEffect(() => {
         dispatch(moviesActions.getTopRated({page}))
-        console.log(topRated);
     }, [page])
 
     return (

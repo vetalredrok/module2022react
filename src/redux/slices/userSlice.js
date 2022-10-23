@@ -16,14 +16,12 @@ const userSlice = createSlice({
             state.token = action.payload.token;
             state.id = action.payload.id;
             state.displayName = action.payload.displayName;
-            console.log(state.email, state.displayName, state.id);
         },
         removeUser: (state)=>{
             state.email = null;
             state.token = null;
             state.id = null;
             state.displayName = null;
-            console.log(state.email, state.displayName, state.id);
         },
     }
 });

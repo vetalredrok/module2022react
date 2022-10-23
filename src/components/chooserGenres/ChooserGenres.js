@@ -15,7 +15,6 @@ const ChooserGenres = () => {
 
     const handleChange = (event) =>{
         const value = event.target.value;
-        console.log(value)
         dispatch(moviesActions.setGenre(value));
         navigate(`discoverGenre/${value}`)
     }

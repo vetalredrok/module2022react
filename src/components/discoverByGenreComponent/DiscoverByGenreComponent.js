@@ -31,7 +31,6 @@ const DiscoverByGenreComponent = () => {
 
     useEffect(()=>{
         if (genre){
-            console.log('ти тут')
             dispatch(moviesActions.discoverByGenre({genre: genre, page}))
         }
     }, [page,selectedGenre])
