@@ -12,7 +12,6 @@ const Movie = ({movie}) => {
 
 
 
-//${posterURL}${poster_path}
     return (
         <Fragment>
             <img src={`${posterURL}${poster_path}`} alt={movie.title} onError={e => {

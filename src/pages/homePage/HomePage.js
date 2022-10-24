@@ -1,10 +1,10 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Container, Pagination} from '@mui/material';
+import {Outlet} from "react-router-dom";
 
 import {RawForGenres, RawForTop} from "../../components";
 import {moviesActions} from "../../redux/slices";
-import {Outlet} from "react-router-dom";
 
 
 const HomePage = () => {

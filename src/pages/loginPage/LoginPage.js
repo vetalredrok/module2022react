@@ -5,8 +5,8 @@ import {Button, Input} from "@mui/material";
 
 import {useForm} from "react-hook-form";
 import {userActions} from "../../redux/slices";
-import css from './LoginPage.module.css';
 import {useNavigate} from "react-router-dom";
+import css from './LoginPage.module.css';
 
 const LoginPage = () => {
 
@@ -20,6 +20,7 @@ const LoginPage = () => {
         const {email, password} = data;
 
         const auth = getAuth();
+
         try {
             const {user} = await signInWithEmailAndPassword(auth, email, password);
             console.log(user);
@@ -33,9 +34,6 @@ const LoginPage = () => {
             navigate(-1);
         } catch (e) {
             alert(e.message);
-            console.log(e.message);
-            console.log(e.code);
-            console.log(e);
         }
 
 

@@ -10,9 +10,9 @@ import {ChooserGenres} from "../chooserGenres/ChooserGenres";
 import {useAuth} from "../../hooks";
 import {ReactComponent as CrownLogo} from '../../assets/smace films.svg';
 import {userActions} from "../../redux/slices";
-import css from './Navigation.module.css'
 import {moviesService} from "../../services";
 import {DarkModeContext} from "../../context";
+import css from './Navigation.module.css';
 
 const Navigation = () => {
 

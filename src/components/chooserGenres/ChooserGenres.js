@@ -23,7 +23,7 @@ const ChooserGenres = () => {
     const handleChange = (event) =>{
         const value = event.target.value;
         dispatch(moviesActions.setGenre(value));
-        navigate(`discoverGenre/${value}`)
+        navigate(`discoverGenre/${value}?page=1`);
     }
 
     return (

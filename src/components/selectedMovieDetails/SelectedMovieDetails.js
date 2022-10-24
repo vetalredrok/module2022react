@@ -3,10 +3,9 @@ import {useNavigate, useParams} from "react-router-dom";
 import YouTube from "react-youtube";
 import {Button} from "@mui/material";
 
-
-import css from './SelectedMovieDetails.module.css'
 import {moviesService} from "../../services";
 import StarRatings from "react-star-ratings/build/star-ratings";
+import css from './SelectedMovieDetails.module.css';
 
 const SelectedMovieDetails = () => {
 
@@ -18,11 +17,12 @@ const SelectedMovieDetails = () => {
       const {data} = await moviesService.getWithVideo(id);
       setMovie({...data});
     }
+
     useEffect(()=>{
         getMovie(selectedFilm)
         document.body.style.overflow = 'hidden';
         return ()=> document.body.style.overflow = 'unset';
-    }, [selectedFilm])
+    }, [selectedFilm]);
 
     const opts = {
         height: "350",
@@ -31,7 +31,7 @@ const SelectedMovieDetails = () => {
             // https://developers.google.com/youtube/player_parameters
             autoplay: 1
         }
-    }
+    };
     
     const renderTrailer = () => {
       let trailer = movie.videos.results.find(video => video.type === 'Trailer');
@@ -46,7 +46,7 @@ const SelectedMovieDetails = () => {
           )
       }
 
-    }
+    };
 
     const handleParentClick = event => {
         event.preventDefault();

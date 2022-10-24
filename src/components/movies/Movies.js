@@ -12,7 +12,7 @@ const Movies = ({page}) => {
 
     useEffect(()=>{
         dispatch(moviesActions.getFromAll({page}));
-    }, [page])
+    }, [page]);
 
 
     return (

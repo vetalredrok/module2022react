@@ -7,8 +7,8 @@ import {useNavigate} from "react-router-dom";
 
 import {createUserDocumentFromAuth} from "../../configs";
 import {userActions} from "../../redux/slices";
-import css from './RegisterPage.module.css';
 import {useAuth} from "../../hooks";
+import css from './RegisterPage.module.css';
 
 
 
@@ -54,9 +54,6 @@ const RegisterPage = () => {
             }
             else {
                 alert(e.message);
-                console.log(e.message);
-                console.log(e.code);
-                console.log(e);
             }
         }
 

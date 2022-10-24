@@ -1,7 +1,6 @@
 import React from 'react';
 import {Box} from "@mui/material";
 
-
 import logo from '../../assets/linkedin.svg';
 import logoInst from '../../assets/instagram.svg';
 import logoGit from '../../assets/github.svg';

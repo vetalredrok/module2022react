@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {MdChevronLeft, MdChevronRight} from 'react-icons/md'
+import {MdChevronLeft, MdChevronRight} from 'react-icons/md';
 
 import {moviesActions} from "../../redux/slices";
 import {Movie} from "../movie/Movie";
@@ -23,7 +23,7 @@ const RawForTop = ({page}) => {
 
     useEffect(() => {
         dispatch(moviesActions.getTopRated({page}))
-    }, [page])
+    }, [page]);
 
     return (
         <div className={css.parent}>

@@ -3,15 +3,15 @@ import {useDispatch, useSelector} from "react-redux";
 import {Container, Pagination, PaginationItem} from "@mui/material";
 import {Link, useLocation, useParams} from "react-router-dom";
 
-import css from "../movies/Movies.module.css";
 import {MovieForList} from "../movieForList/MovieForList";
 import {moviesActions} from "../../redux/slices";
-
+import css from "../movies/Movies.module.css";
 
 
 const SearchComponent = () => {
 
     const location = useLocation();
+    const searchParam = +location.search.split('=')[1];
     const [page, setPage] = useState(+location.search.split('=')[1] || 1);
     const [keyword, setKeyword] = useState('');
     const {request} = useParams();
@@ -23,18 +23,19 @@ const SearchComponent = () => {
         if (request !== keyword){
             setKeyword(request)
         }
-    }, [request, keyword])
+    }, [request, keyword]);
+
     useEffect(() => {
         if(!genres.length){
             dispatch(moviesActions.getAllGenres());
         }
-    }, [genres])
+    }, [genres]);
 
     useEffect(()=>{
         if (keyword){
             dispatch(moviesActions.getFromSearch({request: keyword, page: page}));
         }
-    }, [page, keyword])
+    }, [page, keyword]);
 
 
     return (

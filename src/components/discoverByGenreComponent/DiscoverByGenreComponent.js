@@ -2,38 +2,36 @@ import React, {Fragment, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {moviesActions} from "../../redux/slices";
 import {Link, useLocation, useParams} from "react-router-dom";
-
-import css from './DiscoverByGenreComponent.module.css'
-import {MovieForList} from "../movieForList/MovieForList";
 import {Container, Pagination, PaginationItem} from "@mui/material";
+
+import {MovieForList} from "../movieForList/MovieForList";
+import css from './DiscoverByGenreComponent.module.css';
 
 const DiscoverByGenreComponent = () => {
 
     const location = useLocation();
+    const searchParam = +location.search.split('=')[1];
+
     const dispatch = useDispatch();
     const [page, setPage] = useState(+location.search.split('=')[1] || 1);
-    const [keyword, setKeyword] = useState('');
+
     const {selectedGenre, withGenre, loading, error, genres} = useSelector(state => state.movies);
     const {genre} = useParams();
-
-    useEffect(()=>{
-        if (genre !== keyword){
-            setKeyword(genre)
-        }
-    }, [genre, keyword])
 
     useEffect(() => {
         if(!genres.length){
             dispatch(moviesActions.getAllGenres());
         }
-    }, [genres])
-
+    }, [genres]);
 
     useEffect(()=>{
-        if (genre){
-            dispatch(moviesActions.discoverByGenre({genre: genre, page}))
+        if(searchParam === 1){
+            setPage(1);
         }
-    }, [page,selectedGenre])
+        if (genre){
+            dispatch(moviesActions.discoverByGenre({genre: genre, page}));
+        }
+    }, [page,selectedGenre,searchParam]);
 
     return (
         <Fragment>

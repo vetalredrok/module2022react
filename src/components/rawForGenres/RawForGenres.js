@@ -3,8 +3,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {MdChevronLeft, MdChevronRight} from "react-icons/md";
 
 import {moviesActions} from "../../redux/slices";
-import css from "./RawForGenres.module.css";
 import {Movie} from "../movie/Movie";
+import css from "./RawForGenres.module.css";
 
 const RawForGenres = ({genre, page, title}) => {
 
@@ -26,7 +26,7 @@ const RawForGenres = ({genre, page, title}) => {
             dispatch(moviesActions.deleteFromRow());
         }
         dispatch(moviesActions.getByGenre({genre,page}))
-    }, [page])
+    }, [page]);
 
     const index = barFirst.findIndex(value => value.id === genre);
 
