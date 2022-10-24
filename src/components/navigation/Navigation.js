@@ -92,8 +92,8 @@ const Navigation = () => {
 
                     <ChooserGenres/>
 
-                    <Button sx={{backgroundColor: 'black'}} color={'secondary'} onClick={()=> setDarkMode(!darkMode)}>Dark mode</Button>
-                <Button sx={{backgroundColor: 'black'}} color={'secondary'} onClick={()=> navigate('info')}>Info page</Button>
+                    <Button size={'small'} sx={{backgroundColor: 'black'}} color={'secondary'} onClick={()=> setDarkMode(!darkMode)}>Dark mode</Button>
+                <Button size={'small'} sx={{backgroundColor: 'black'}} color={'secondary'} onClick={()=> navigate('info')}>Info page</Button>
                     <div className={css.nav_links_container}>
                         {
                             displayName && <div className={css.name}>{displayName}</div>

@@ -42,7 +42,7 @@ const MovieForList = ({movie}) => {
                 rating={movie.vote_average}
                 starRatedColor="violet"
                 numberOfStars={10}
-                starDimension="15px"
+                starDimension="11px"
                 />
             </div>
         </div>
