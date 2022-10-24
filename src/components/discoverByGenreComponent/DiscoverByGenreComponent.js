@@ -13,7 +13,7 @@ const DiscoverByGenreComponent = () => {
     const dispatch = useDispatch();
     const [page, setPage] = useState(+location.search.split('=')[1] || 1);
     const [keyword, setKeyword] = useState('');
-    const {selectedGenre, withGenre, loading, error, genres} = useSelector(state => state.movies)
+    const {selectedGenre, withGenre, loading, error, genres} = useSelector(state => state.movies);
     const {genre} = useParams();
 
     useEffect(()=>{
