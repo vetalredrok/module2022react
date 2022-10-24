@@ -105,7 +105,6 @@ const Navigation = () => {
                         }
                     </div>
                 </div>
-            <hr/>
         </Fragment>
     );
 };
